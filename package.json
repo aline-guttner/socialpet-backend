@@ -21,11 +21,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.0",
     "uuid": "^8.3.2",
+    "dotenv": "^16.0.1",
     "dotenv-safe": "^8.2.0"
   },
   "devDependencies": {
-    "dotenv": "^16.0.1",
-    "dotenv-safe": "^8.2.0",
     "nodemon": "^1.19.4"
   }
 }
