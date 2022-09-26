@@ -1,0 +1,88 @@
+GET http://localhost:8000/auth/userhome
+
+###
+
+GET http://localhost:8000/auth/
+
+###
+
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username":"Ddasdaso",
+    "email":"ddarsdao@dope.com",
+    "password":"password"
+}
+
+###
+
+GET http://localhost:8000/auth/62f545dce5a155d7d83582b3
+
+###
+
+GET http://localhost:8000/auth/alcegatto@gmail.com
+
+###
+
+PATCH http://localhost:8000/user/632487cd6f93cd1bfb02c15f
+Content-Type: application/json
+
+{
+    "profileImg": ""
+}
+
+###
+
+DELETE http://localhost:8000/auth/62bb4b32e65016fb7bbbc80d
+
+###
+
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "email":"raiodesoln@emilson.com",
+    "password":"luna"
+}
+
+###
+
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+    {
+        "email":"raiodesoln@emilson.com",
+        "password":"luna" 
+    }
+
+###
+
+POST http://localhost:8000/posts/
+Content-Type: application/json
+
+{
+    "title":"Nposdasdas",
+    "userId":"62b8c3ae37e00164124fbce4"
+}
+
+###
+
+GET http://localhost:8000/posts/
+
+###
+
+GET http://localhost:8000/posts/62bb924e8420afaa8cae8a41
+
+###
+
+PATCH http://localhost:8000/posts/62bb9ac7f4575d5388d87859
+Content-Type: application/json
+
+{
+    "content": "Conteúdo novíssimdsadasdasdassssdaso"
+}
+
+###
+
+DELETE http://localhost:8000/posts/62bb924e8420afaa8cae8a41
