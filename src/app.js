@@ -14,10 +14,11 @@ app.options('*', cors()) // include before other routes
 
 app.use((req, res, next) => {
     //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "https://aline-guttner.github.io");
     //Quais são os métodos que a conexão pode realizar na API
     res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    res.setHeader('Access-Control-Allow-Credentials', true);
     app.use(cors());
     next();
 });
