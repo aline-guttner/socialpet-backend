@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors());
 
-dotenv.config();
+dotenv.config({ silent: true });
 
 app.options('*', cors()) // include before other routes
 
