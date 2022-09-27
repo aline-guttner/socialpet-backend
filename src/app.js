@@ -10,8 +10,6 @@ import bodyParser from "body-parser";
 
 const app = express();
 
-app.options('*', cors()) // include before other routes
-
 app.use((req, res, next) => {
     //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
     res.setHeader("Access-Control-Allow-Origin", "https://aline-guttner.github.io");
@@ -23,7 +21,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// dotenv.config();
+require("dotenv").config();
+
+app.options('*', cors()) // include before other routes
 
 database.on('error', (error) => console.error(error)); //alterado
 database.on('open', () => console.log('Connected to database')); //alterado
