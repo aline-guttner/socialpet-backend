@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors());
 
-require("dotenv").config();
+dotenv.config();
 
 app.options('*', cors()) // include before other routes
 
