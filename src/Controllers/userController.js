@@ -83,10 +83,10 @@ class userController {
             return res.status(500).json({ message: err.message })
         }
         res.user = user
+        res.pets = pets
         try {
-            for (i = 0; i < pets; i++) {
-                let pet = await Pet.findById(pets[i].id)
-                await pet.remove()
+            for (i = 0; i < res.pets; i++) {
+                await Pet.findById(res.pets[i].id).remove()
             }
             await res.user.remove()
             res.json({ message: "Deleted user" })
