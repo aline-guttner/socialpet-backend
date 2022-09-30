@@ -71,10 +71,8 @@ class userController {
     }
     static deleteUser = async (req, res) => {
         let user
-        let pets
         try {
             user = await User.findById(req.params.id)
-            pets = user.pets
             if (user == null) {
                 return res.status(404).json({ message: 'Cannot find user' })
 
@@ -85,9 +83,6 @@ class userController {
         res.user = user
         res.pets = pets
         try {
-            for (i = 0; i < res.pets; i++) {
-                await Pet.findById(res.pets[i].id).remove()
-            }
             await res.user.remove()
             res.json({ message: "Deleted user" })
         } catch (err) {
