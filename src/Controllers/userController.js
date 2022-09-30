@@ -1,7 +1,7 @@
 import User from "../models/userModel.js"
 import Pet from "../models/petModel.js"
 
-class userController{
+class userController {
     static getAllUsers = async (req, res) => {
         try {
             const users = await User.find()
@@ -23,7 +23,7 @@ class userController{
             return res.status(500).json({ message: err.message })
         }
     }
-    
+
 
     static updateUser = async (req, res) => {
         let user
@@ -71,8 +71,10 @@ class userController{
     }
     static deleteUser = async (req, res) => {
         let user
+        let pets
         try {
             user = await User.findById(req.params.id)
+            pets = user.pets
             if (user == null) {
                 return res.status(404).json({ message: 'Cannot find user' })
 
@@ -82,6 +84,10 @@ class userController{
         }
         res.user = user
         try {
+            for (i = 0; i < pets; i++) {
+                let pet = await Pet.findById(pets[i].id)
+                await pet.remove()
+            }
             await res.user.remove()
             res.json({ message: "Deleted user" })
         } catch (err) {
