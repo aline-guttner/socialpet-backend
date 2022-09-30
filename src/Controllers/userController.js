@@ -81,7 +81,6 @@ class userController {
             return res.status(500).json({ message: err.message })
         }
         res.user = user
-        res.pets = pets
         try {
             await res.user.remove()
             res.json({ message: "Deleted user" })
