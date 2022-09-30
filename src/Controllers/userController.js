@@ -1,5 +1,4 @@
 import User from "../models/userModel.js"
-import Pet from "../models/petModel.js"
 
 class userController {
     static getAllUsers = async (req, res) => {
