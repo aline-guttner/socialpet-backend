@@ -2,7 +2,7 @@ GET http://localhost:8000/auth/userhome
 
 ###
 
-GET http://localhost:8000/auth/
+GET https://socialpet-backend.herokuapp.com/posts/
 
 ###
 
