@@ -1,3 +1,4 @@
+import Pet from "../models/petModel.js"
 import User from "../models/userModel.js"
 
 class userController {
@@ -70,8 +71,10 @@ class userController {
     }
     static deleteUser = async (req, res) => {
         let user
+        let pets
         try {
             user = await User.findById(req.params.id)
+            pets = user.pets
             if (user == null) {
                 return res.status(404).json({ message: 'Cannot find user' })
 
@@ -82,6 +85,11 @@ class userController {
         res.user = user
         try {
             await res.user.remove()
+            await Promise.all(
+                pets.map(pet => {
+                    return Pet.findById(pet.id).remove()
+                })
+            )
             res.json({ message: "Deleted user" })
         } catch (err) {
             res.status(500).json({ message: err.message })

@@ -85,4 +85,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8000/posts/62bb924e8420afaa8cae8a41
+DELETE http://localhost:8000/user/63374bd28a69244cf872217b
