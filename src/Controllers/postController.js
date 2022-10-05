@@ -54,14 +54,19 @@ class postController {
         res.post = post
         if (req.body.content != null) {
             res.post.content = req.body.content
+            res.post.date = Date.now()
         }
         if (req.body.image != null) {
             res.post.image = req.body.image
+            res.post.date = Date.now()
         }
         if (req.body.title != null) {
             res.post.title = req.body.title
+            res.post.date = Date.now()
         }
-        res.post.date = Date.now()
+        if (req.body.usersLiked != null) {
+            res.post.usersLiked = req.body.usersLiked
+        }
         try {
             const updatedPost = await res.post.save()
             res.json(updatedPost)

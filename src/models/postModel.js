@@ -16,6 +16,10 @@ const postSchema = new mongoose.Schema({
     content: {
         type: String,
         default: "",
+    },
+    usersLiked: {
+        type: [String],
+        default: []
     }
 
 })
