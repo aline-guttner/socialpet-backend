@@ -1,4 +1,5 @@
 import Post from "../models/postModel.js"
+import User from "../models/userModel.js";
 
 class postController {
     static postHome = (req, res) => {
@@ -11,6 +12,14 @@ class postController {
     static createPost = async (req, res) => {
         try {
             const post = await Post.create(req.body)
+            const user = await User.findById(post.userId)
+            if (user == null) {
+                return res.status(404).json({ message: 'Cannot find user' })
+            }
+            res.post = post
+            res.post.name = user.name
+            res.post.profileImg = user.profileImg
+            await res.post.save()
             res.status(201).send(post)
         } catch (err) {
             res.status(500).json({ message: err.message })
@@ -42,11 +51,16 @@ class postController {
 
     static updatePost = async (req, res) => {
         let post
+        let user
         try {
             post = await Post.findById(req.params.id)
             if (post == null) {
                 return res.status(404).json({ message: 'Cannot find post' })
 
+            }
+            user = await User.findById(post.userId)
+            if (user == null) {
+                return res.status(404).json({ message: 'Cannot find user' })
             }
         } catch (err) {
             return res.status(500).json({ message: err.message })
@@ -67,6 +81,8 @@ class postController {
         if (req.body.usersLiked != null) {
             res.post.usersLiked = req.body.usersLiked
         }
+        res.post.name = user.name
+        res.post.profileImg = user.profileImg
         try {
             const updatedPost = await res.post.save()
             res.json(updatedPost)

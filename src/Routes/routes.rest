@@ -58,12 +58,13 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/posts/
+PATCH http://localhost:8000/posts/63484f865321b6a7cb7e8631
 Content-Type: application/json
 
 {
     "title":"Nposdasdas",
-    "userId":"62b8c3ae37e00164124fbce4"
+    "content":"Aaaaaaaaaleira",
+    "name": "harpon"
 }
 
 ###

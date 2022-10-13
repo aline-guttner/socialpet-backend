@@ -20,6 +20,14 @@ const postSchema = new mongoose.Schema({
     usersLiked: {
         type: [String],
         default: []
+    },
+    name: {
+        type: String,
+        default: ''
+    },
+    profileImg: {
+        type: String,
+        default: ''
     }
 
 })

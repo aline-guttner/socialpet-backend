@@ -61,6 +61,7 @@ class userController {
         if (req.body.pets != null) {
             res.user.pets = req.body.pets
         }
+
         try {
             const updatedUser = await res.user.save()
             res.json(updatedUser)

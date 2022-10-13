@@ -49,7 +49,8 @@ const userSchema = new mongoose.Schema({
     likedPosts: {
         type: [String],
         default: []
-    }
+    },
+    username: String
 })
 
 userSchema.pre("save", async function (next) {
