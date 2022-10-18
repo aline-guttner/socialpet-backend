@@ -74,11 +74,13 @@ class AuthController {
                 req.userId = decoded.id;
 
             });
+
+            res.json({
+                auth: true,
+                loggedId: req.userId
+            })
         } catch (error) {
-            if (e instanceof jwt.JsonWebTokenError) {
-                return res.status(401).end()
-            }
-            return res.status(400).end()
+            res.send(error)
         }
 
     }
