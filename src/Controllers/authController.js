@@ -60,7 +60,30 @@ class AuthController {
             "message": "Olá, pessoa!"
         });
     };
+
+
+    static verifyJWT = async (req, res) => {
+        let token = req.headers['x-access-token'];
+        if (!token) {
+            return res.status(401).send({ auth: false, message: 'Token não informado.' });
+        }
+        try {
+            let payload = await jsonwebtoken.verify(token, process.env.API_SECRET, function (err, decoded) {
+                if (err)
+                    return res.status(500).send({ auth: false, message: 'Token inválido.' });
+                req.userId = decoded.id;
+
+            });
+        } catch (error) {
+            if (e instanceof jwt.JsonWebTokenError) {
+                return res.status(401).end()
+            }
+            return res.status(400).end()
+        }
+
+    }
 }
+
 
 
 
